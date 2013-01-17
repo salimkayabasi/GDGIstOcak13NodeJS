@@ -1,0 +1,38 @@
+script(type='text/javascript')
+    var map;
+    var markersArray = [];
+    $(document).ready(function(){
+    map = new GMaps({
+      el: '#map',
+      zoom: 12,
+      lat: 41.0192,
+      lng: 28.9840
+    });
+    map.setContextMenu({
+        control: 'map',
+        options: [{
+            title: 'My Location',
+            name: 'my_location',
+            action: function(e) {
+                GMaps.geolocate({
+                  success: function(position){
+                    map.setCenter(position.coords.latitude, position.coords.longitude);
+                    map.setZoom(16);
+                  },
+                  error: function(error){
+                    alert('Geolocation failed: ' + error.message);
+                  },
+                  not_supported: function(){
+                    alert("Your browser does not support geolocation");
+                  }
+                });
+            }
+        }, {
+            title: 'Center here',
+            name: 'center_here',
+            action: function(e) {
+                this.setCenter(e.latLng.lat(), e.latLng.lng());
+            }
+        }]
+        });
+    });

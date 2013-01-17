@@ -1,0 +1,17 @@
+{
+    "name":"GDGIstanbul",
+    "version":"0.0.1",
+    "private":true,
+    "scripts":{
+        "start":"server.js"
+    },
+    "dependencies":{
+        "express":"*",
+        "jade":"*",
+        "mongoose":"*",
+        "express-namespace":"*",
+        "connect-mongo":"*",
+        "connect-flash":"*",
+        "underscore":"*"
+    }
+}

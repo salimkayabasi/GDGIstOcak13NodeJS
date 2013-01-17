@@ -1,0 +1,32 @@
+block header
+    .row-fluid
+        a(href='/').pull-left
+            img(src='imgs/gdg.png')
+        h2.pull-right 19 Ocak'12
+    .row-fluid
+        .btn-group.pull-right
+            a.btn-info.btn.dropdown-toggle(data-toggle='dropdown')
+                | Menü
+                span.caret
+            ul.dropdown-menu
+                li.dropdown-submenu.pull-left
+                        a API
+                        ul.dropdown-menu
+                            li
+                                a(href='/api/activity',target='_blank') GET Aktivite
+                            li
+                                a(href='/api/activity/new',target='_blank') POST Aktivite
+                li.dropdown-submenu.pull-left
+                    a Site
+                    ul.dropdown-menu
+                        li
+                            a(href='/new') Yeni Aktivite
+                        li
+                            a(href='/last') Son Aktiviteler
+                        li
+                            a(href='/near') Yakınımdaki Aktiviteler
+                li.divider
+                li
+                    a(href='https://github.com/MiniKod/GDGIstOcak12NodeJS',target='_blank') Kaynak Kod
+                li
+                    a(href='https://github.com/MiniKod/GDGIstOcak12Android',target='_blank') Android Kod

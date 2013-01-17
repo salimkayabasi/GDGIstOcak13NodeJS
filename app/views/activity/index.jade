@@ -1,0 +1,12 @@
+extends ../layout/layout
+
+block content
+    .row-fluid.well-large
+        #map.well-large
+    .row-fluid.center
+        .span5.offset1.well.well-large.pull-left
+            h4 Son Bildirimler
+            include sonBildirimler
+        .span5.well.well-large.pull-left
+            h4 Çevrenizdeki Bildirimler
+            include cevrenizdekiBildirimler

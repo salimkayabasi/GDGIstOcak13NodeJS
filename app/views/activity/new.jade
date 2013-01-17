@@ -1,0 +1,33 @@
+extends ../layout/layout
+
+block content
+    div.modal-header.well
+        h3 #{title}
+        form.form-horizontal(method='post',action='/api/activity/new', enctype="multipart/form-data")
+            .control-group
+                label.control-label(for='title') Başlık
+                .controls
+                    input.input-xlarge(type='text', name="title", value=activity.title, placeholder='Başlık')
+            .control-group
+                label.control-label(for='body') İçerik
+                .controls
+                    input.input-xlarge(type='text', name="body", value=activity.body, placeholder='İçerik')
+            .control-group
+                label.control-label(for='user') Kullanıcı
+                .controls
+                    input.input-xlarge(type='text', name="user", value=activity.user, placeholder='Kullanıcı')
+            .control-group
+                label.control-label(for='pic') Fotoğraf
+                .controls
+                    input.input-xlarge(type='file', name="pic", value=activity.pic, placeholder='Fotoğraf')
+            .control-group
+                label.control-label(for='geo') Lokasyon
+                .controls
+                    input.input-xlarge(type='text', name="geo", value=activity.loc, placeholder='Lokasyon')
+
+            div.model-footer
+                .form-actions
+                    button.btn.btn-info(type='submit') Kaydet
+                    &nbsp;
+                    a.btn(href='/', title="cancel") İptal
+
