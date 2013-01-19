@@ -28,16 +28,14 @@ exports.apinew = function (req, res) {
     activity.loc = req.body.geo.split(',')
     publicPath = './public/imgs/upload/';
 
-    if (req.files) {
-        if (req.files.pic) {
-            fs.readFile(req.files.pic.path, function (err, data) {
-                fs.writeFile(publicPath + req.files.pic.name, data, function (err) {
-                    if (err) res.send(err)
-                    activity.pic = publicPath.substr(8) + req.files.pic.name
-                    save(req, res, activity)
-                })
+    if (req.files && typeof req.files.pic !== 'undefined' && req.files.pic.size != 0) {
+        fs.readFile(req.files.pic.path, function (err, data) {
+            fs.writeFile(publicPath + req.files.pic.name, data, function (err) {
+                if (err) res.send(err)
+                activity.pic = publicPath.substr(8) + req.files.pic.name
+                save(req, res, activity)
             })
-        }
+        })
     }
     else if (req.body.file) {
         var imgName = require('crypto').randomBytes(16).toString('hex') + '.jpg'

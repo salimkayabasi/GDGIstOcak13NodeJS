@@ -10,3 +10,24 @@ block content
         .span5.well.well-large.pull-left
             h4 Çevrenizdeki Bildirimler
             include cevrenizdekiBildirimler
+block script
+    script
+        $(function() {
+            $.ajax({
+            type:'get',
+            url:'/api/activity',
+            success:function(data){
+                $.each(data,function(i,e){
+                var fake = (Math.random()*0.0001)
+                    map.addMarker({
+                    lat : e.loc[0] + fake,
+                    lng : e.loc[1] - fake,
+                    title: e.title,
+                    infoWindow: {
+                        content: '<h5>'+e.title+'</h5><br /><h6>'+e.body+'</h6><img width="200" src="'+e.pic+'"/>'
+                    }
+                    })
+                })
+                }
+            })
+        });

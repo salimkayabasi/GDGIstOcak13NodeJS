@@ -18,6 +18,10 @@ a {
     -webkit-box-shadow: 0px 5px 20px #ccc;
     box-shadow: 0px 5px 20px #ccc;
 }
+#map img {
+    max-width: none;
+}
+
 
 #map.large {
     height: 500px;
