@@ -4,12 +4,9 @@ block content
     .row-fluid.well-large
         #map.well-large
     .row-fluid.center
-        .span5.offset1.well.well-large.pull-left
+        .span9.offset2.well.well-large.pull-left
             h4 Son Bildirimler
             include sonBildirimler
-        .span5.well.well-large.pull-left
-            h4 Çevrenizdeki Bildirimler
-            include cevrenizdekiBildirimler
 block script
     script
         $(function() {
@@ -18,13 +15,25 @@ block script
             url:'/api/activity',
             success:function(data){
                 $.each(data,function(i,e){
+                var className = (i%2 == 0) ? '' : 'btn-inverse';
+                var item = '<div class="media '+className+'" onclick="map.setCenter('+e.loc+');map.setZoom(19);$(body).animate({ scrollTop: 200 }, 800);">'+
+                '<a class="pull-left" href="#">'+
+                '<img class="media-object" style="width: 120px;" src="'+e.pic+'">'+
+                '</a>'+
+                '<div class="media-body">'+
+                    '<h4 class="media-heading">'+e.user + ': ' +e.title+'</h4>'+
+                    e.body+
+                    '<br/><label>'+e.createdAt+'</label><label>'+e.loc+'</label>'+
+                '</div>'+
+                '</div>'
+                $('#sonBildirimler').append(item)
                 var fake = (Math.random()*0.0001)
                     map.addMarker({
                     lat : e.loc[0] + fake,
                     lng : e.loc[1] - fake,
                     title: e.title,
                     infoWindow: {
-                        content: '<h5>'+e.title+'</h5><br /><h6>'+e.body+'</h6><img width="200" src="'+e.pic+'"/>'
+                        content: '<h5>'+e.user + ': '+e.title+'</h5><br /><h6>'+e.body+'</h6><img width="200" src="'+e.pic+'"/>'
                     }
                     })
                 })
