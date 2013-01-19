@@ -5,6 +5,7 @@ module.exports = function (app) {
     var activities = require('../app/controllers/activity')
     app.get('/', activities.index)
     app.get('/new', activities.new)
+    app.get('/download', activities.download)
     app.post('/api/activity/new',activities.apinew)
     app.get('/api/activity/new',activities.notget)
     app.get('/api/activity',activities.apiget)

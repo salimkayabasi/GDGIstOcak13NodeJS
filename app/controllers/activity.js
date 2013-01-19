@@ -15,6 +15,12 @@ exports.new = function (req, res) {
     })
 }
 
+exports.download = function (req, res) {
+    res.render('activity/download', {
+        title:'Download'
+    })
+}
+
 
 exports.apiget = function (req, res) {
     Activity.find().sort({'createdAt':-1}).exec(function (err, docs) {
